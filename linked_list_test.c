@@ -21,7 +21,7 @@ void create_linked_list_node_test() {
     assert(n->next == NULL);
 }
 
-void append_value_to_list() {
+void append_value_to_list_test() {
     linked_list *l = linked_list_create();
     linked_list_append_value(l, 1);
     linked_list_append_value(l, 2);
@@ -29,7 +29,7 @@ void append_value_to_list() {
     assert(l->head->next->value == 2);
 }
 
-void append_node_to_empty_list() {
+void append_node_to_empty_list_test() {
     linked_list *l = linked_list_create();
     linked_list_node *n = linked_list_node_create();
     linked_list_append_node(l, n);
@@ -38,7 +38,7 @@ void append_node_to_empty_list() {
     assert(l->count == 1);
 }
 
-void append_node_to_list_with_at_least_one_element() {
+void append_node_to_list_with_at_least_one_element_test() {
     linked_list *l = linked_list_create();
     linked_list_node *n1 = linked_list_node_create();
     linked_list_node *n2 = linked_list_node_create();
@@ -50,7 +50,7 @@ void append_node_to_list_with_at_least_one_element() {
     assert(l->head->next == n2);
 }
 
-void append_node_after_node() {
+void append_node_after_node_test() {
     linked_list *l = linked_list_create();
     linked_list_node *n1 = linked_list_node_create();
     linked_list_node *n2 = linked_list_node_create();
@@ -63,7 +63,7 @@ void append_node_after_node() {
     assert(l->count == 3);
 }
 
-void append_node_after_tail() {
+void append_node_after_tail_test() {
     linked_list *l = linked_list_create();
     linked_list_node *n1 = linked_list_node_create();
     linked_list_node *n2 = linked_list_node_create();
@@ -78,11 +78,11 @@ void append_node_after_tail() {
 int main() {
     run_test(create_linked_list_test);
     run_test(create_linked_list_node_test);
-    run_test(append_value_to_list);
-    run_test(append_node_to_empty_list);
-    run_test(append_node_to_list_with_at_least_one_element);
-    run_test(append_node_after_node);
-    run_test(append_node_after_tail);
+    run_test(append_value_to_list_test);
+    run_test(append_node_to_empty_list_test);
+    run_test(append_node_to_list_with_at_least_one_element_test);
+    run_test(append_node_after_node_test);
+    run_test(append_node_after_tail_test);
     printf("\n");
     return 0;
 }
