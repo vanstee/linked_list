@@ -1,4 +1,7 @@
-struct linked_list_node {};
+struct linked_list_node {
+   int value;
+   struct linked_list_node *next;
+};
 typedef struct linked_list_node linked_list_node;
 
 struct linked_list {

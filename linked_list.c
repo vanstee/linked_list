@@ -14,5 +14,7 @@ linked_list *linked_list_create() {
 linked_list_node *linked_list_node_create() {
     linked_list_node *n = (linked_list_node *)malloc(sizeof(linked_list_node));
     n = memset(n, 0, sizeof(linked_list_node));
+    n->value = 0;
+    n->next = NULL;
     return n;
 }

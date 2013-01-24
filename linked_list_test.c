@@ -17,6 +17,8 @@ void create_linked_list_test() {
 void create_linked_list_node_test() {
     linked_list_node *n = linked_list_node_create();
     assert(n != NULL);
+    assert(n->value == 0);
+    assert(n->next == NULL);
 }
 
 int main() {
