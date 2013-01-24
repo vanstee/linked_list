@@ -18,3 +18,24 @@ linked_list_node *linked_list_node_create() {
     n->next = NULL;
     return n;
 }
+
+void linked_list_append_node(linked_list *l, linked_list_node *n) {
+    if (l->tail) {
+        linked_list_append_node_after(l, n, l->tail);
+    } else {
+        l->head = n;
+        l->tail = n;
+        l->count++;
+    }
+}
+
+void linked_list_append_node_after(linked_list *l, linked_list_node *n, linked_list_node *a) {
+    n->next = a->next;
+    a->next = n;
+
+    if (l->tail == a) {
+        l->tail = n;
+    }
+
+    l->count++;
+}
