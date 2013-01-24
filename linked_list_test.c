@@ -143,9 +143,9 @@ void remove_tail_test() {
     linked_list_node *n2 = linked_list_node_create();
     linked_list_append_node(l, n1);
     linked_list_append_node(l, n2);
-    linked_list_remove_node(l, n1);
-    assert(l->head == n2);
-    assert(l->tail == n2);
+    linked_list_remove_node(l, n2);
+    assert(l->head == n1);
+    assert(l->tail == n1);
 }
 
 void remove_only_node_test() {
