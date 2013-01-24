@@ -45,3 +45,35 @@ void linked_list_append_node_after(linked_list *l, linked_list_node *n, linked_l
 
     l->count++;
 }
+
+void linked_list_remove_node(linked_list *l, linked_list_node *n) {
+    linked_list_node *p = linked_list_find_previous_node(l, n);
+
+    if (p && n->next) {
+        p->next = n->next;
+    } else {
+        if (!p) {
+          l->head = n->next;
+        }
+
+        if (!n->next) {
+          l->tail = p;
+        }
+    }
+
+    n->next = NULL;
+    l->count--;
+}
+
+linked_list_node *linked_list_find_previous_node(linked_list *l, linked_list_node *n) {
+    linked_list_node *p = l->head;
+
+    while (p) {
+        if (p->next == n) {
+            return p;
+        }
+        p = p->next;
+    }
+
+    return NULL;
+}

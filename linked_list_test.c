@@ -75,6 +75,51 @@ void append_node_after_tail_test() {
     assert(l->count == 2);
 }
 
+void remove_node_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n1 = linked_list_node_create();
+    linked_list_node *n2 = linked_list_node_create();
+    linked_list_node *n3 = linked_list_node_create();
+    linked_list_append_node(l, n1);
+    linked_list_append_node(l, n2);
+    linked_list_append_node(l, n3);
+    linked_list_remove_node(l, n2);
+    assert(n1->next == n3);
+    assert(n2->next == NULL);
+    assert(l->count == 2);
+}
+
+void remove_head_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n1 = linked_list_node_create();
+    linked_list_node *n2 = linked_list_node_create();
+    linked_list_append_node(l, n1);
+    linked_list_append_node(l, n2);
+    linked_list_remove_node(l, n1);
+    assert(l->head == n2);
+    assert(l->tail == n2);
+}
+
+void remove_tail_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n1 = linked_list_node_create();
+    linked_list_node *n2 = linked_list_node_create();
+    linked_list_append_node(l, n1);
+    linked_list_append_node(l, n2);
+    linked_list_remove_node(l, n1);
+    assert(l->head == n2);
+    assert(l->tail == n2);
+}
+
+void remove_only_node_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n = linked_list_node_create();
+    linked_list_append_node(l, n);
+    linked_list_remove_node(l, n);
+    assert(l->head == NULL);
+    assert(l->tail == NULL);
+}
+
 int main() {
     run_test(create_linked_list_test);
     run_test(create_linked_list_node_test);
@@ -83,6 +128,10 @@ int main() {
     run_test(append_node_to_list_with_at_least_one_element_test);
     run_test(append_node_after_node_test);
     run_test(append_node_after_tail_test);
+    run_test(remove_node_test);
+    run_test(remove_head_test);
+    run_test(remove_tail_test);
+    run_test(remove_only_node_test);
     printf("\n");
     return 0;
 }
