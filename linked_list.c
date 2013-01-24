@@ -20,8 +20,6 @@ linked_list_node *linked_list_node_create() {
 }
 
 void linked_list_append_value(linked_list *l, int v) {
-
-
     linked_list_node *n = linked_list_node_create();
     n->value = v;
     linked_list_append_node(l, n);
@@ -48,11 +46,13 @@ void linked_list_append_node_after(linked_list *l, linked_list_node *n, linked_l
     l->count++;
 }
 
-void linked_list_remove_value(linked_list *l, int v) {
+linked_list_node *linked_list_remove_value(linked_list *l, int v) {
     linked_list_node *n = linked_list_find_node_for_value(l, v);
 
     if (n) {
-        linked_list_remove_node(l, n);
+        return linked_list_remove_node(l, n);
+    } else {
+        return NULL;
     }
 }
 
@@ -69,7 +69,7 @@ linked_list_node *linked_list_find_node_for_value(linked_list *l, int v) {
     return NULL;
 }
 
-void linked_list_remove_node(linked_list *l, linked_list_node *n) {
+linked_list_node *linked_list_remove_node(linked_list *l, linked_list_node *n) {
     linked_list_node *p = linked_list_find_previous_node(l, n);
 
     if (p && n->next) {
@@ -86,6 +86,8 @@ void linked_list_remove_node(linked_list *l, linked_list_node *n) {
 
     n->next = NULL;
     l->count--;
+
+    return n;
 }
 
 linked_list_node *linked_list_find_previous_node(linked_list *l, linked_list_node *n) {
