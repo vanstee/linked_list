@@ -1,4 +1,4 @@
-Linked List in C
+Linked List in C [![Build Status](https://api.travis-ci.org/vanstee/linked_list.png)](https://travis-ci.org/vanstee/linked_list)
 ----------------
 
 After watching [@garybernhardt](https://github.com/garybernhardt) test drive
