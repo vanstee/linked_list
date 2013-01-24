@@ -46,6 +46,27 @@ void linked_list_append_node_after(linked_list *l, linked_list_node *n, linked_l
     l->count++;
 }
 
+void linked_list_remove_value(linked_list *l, int v) {
+    linked_list_node *n = linked_list_find_node_for_value(l, v);
+
+    if (n) {
+        linked_list_remove_node(l, n);
+    }
+}
+
+linked_list_node *linked_list_find_node_for_value(linked_list *l, int v) {
+    linked_list_node *n = l->head;
+
+    while (n) {
+        if (n->value == v) {
+            return n;
+        }
+        n = n->next;
+    }
+
+    return NULL;
+}
+
 void linked_list_remove_node(linked_list *l, linked_list_node *n) {
     linked_list_node *p = linked_list_find_previous_node(l, n);
 

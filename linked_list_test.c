@@ -75,6 +75,35 @@ void append_node_after_tail_test() {
     assert(l->count == 2);
 }
 
+void remove_value_test() {
+    linked_list *l = linked_list_create();
+    linked_list_append_value(l, 1);
+    linked_list_remove_value(l, 1);
+    linked_list_node *n = linked_list_find_node_for_value(l, 1);
+    assert(n == NULL);
+}
+
+void find_node_for_value_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n1 = linked_list_node_create();
+    n1->value = 1;
+    linked_list_node *n2 = linked_list_node_create();
+    n2->value = 2;
+    linked_list_node *n3 = linked_list_node_create();
+    n3->value = 3;
+    linked_list_append_node(l, n1);
+    linked_list_append_node(l, n2);
+    linked_list_append_node(l, n3);
+    linked_list_node *n = linked_list_find_node_for_value(l, 2);
+    assert(n == n2);
+}
+
+void dont_find_node_for_value_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n = linked_list_find_node_for_value(l, 1);
+    assert(n == NULL);
+}
+
 void remove_node_test() {
     linked_list *l = linked_list_create();
     linked_list_node *n1 = linked_list_node_create();
@@ -128,6 +157,9 @@ int main() {
     run_test(append_node_to_list_with_at_least_one_element_test);
     run_test(append_node_after_node_test);
     run_test(append_node_after_tail_test);
+    run_test(remove_value_test);
+    run_test(find_node_for_value_test);
+    run_test(dont_find_node_for_value_test);
     run_test(remove_node_test);
     run_test(remove_head_test);
     run_test(remove_tail_test);
