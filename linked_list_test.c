@@ -21,6 +21,14 @@ void create_linked_list_node_test() {
     assert(n->next == NULL);
 }
 
+void append_value_to_list() {
+    linked_list *l = linked_list_create();
+    linked_list_append_value(l, 1);
+    linked_list_append_value(l, 2);
+    assert(l->head->value == 1);
+    assert(l->head->next->value == 2);
+}
+
 void append_node_to_empty_list() {
     linked_list *l = linked_list_create();
     linked_list_node *n = linked_list_node_create();
@@ -70,6 +78,7 @@ void append_node_after_tail() {
 int main() {
     run_test(create_linked_list_test);
     run_test(create_linked_list_node_test);
+    run_test(append_value_to_list);
     run_test(append_node_to_empty_list);
     run_test(append_node_to_list_with_at_least_one_element);
     run_test(append_node_after_node);

@@ -19,6 +19,12 @@ linked_list_node *linked_list_node_create() {
     return n;
 }
 
+void linked_list_append_value(linked_list *l, int v) {
+    linked_list_node *n = linked_list_node_create();
+    n->value = v;
+    linked_list_append_node(l, n);
+}
+
 void linked_list_append_node(linked_list *l, linked_list_node *n) {
     if (l->tail) {
         linked_list_append_node_after(l, n, l->tail);
