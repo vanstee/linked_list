@@ -149,6 +149,23 @@ void remove_only_node_test() {
     assert(l->tail == NULL);
 }
 
+/*
+ * The following free tests make no assertions, but if there are memory leaks
+ * run `make profile` and they should show up when this code is exercised.
+ */
+
+void free_list_test() {
+    linked_list *l = linked_list_create();
+    linked_list_node *n = linked_list_node_create();
+    linked_list_append_node(l, n);
+    linked_list_free(l);
+}
+
+void free_node_test() {
+    linked_list_node *n = linked_list_node_create();
+    linked_list_node_free(n);
+}
+
 int main() {
     run_test(create_linked_list_test);
     run_test(create_linked_list_node_test);
@@ -164,6 +181,8 @@ int main() {
     run_test(remove_head_test);
     run_test(remove_tail_test);
     run_test(remove_only_node_test);
+    run_test(free_list_test);
+    run_test(free_node_test);
     printf("\n");
     return 0;
 }

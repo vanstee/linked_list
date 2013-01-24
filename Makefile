@@ -7,6 +7,9 @@ linked_list_test: *.c *.h
 test: linked_list_test
 	./bin/linked_list_test
 
+profile: linked_list_test
+	valgrind bin/linked_list_test
+
 clean:
 	rm -f *.o
 	rm -rf bin

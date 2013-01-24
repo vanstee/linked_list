@@ -20,6 +20,8 @@ linked_list_node *linked_list_node_create() {
 }
 
 void linked_list_append_value(linked_list *l, int v) {
+
+
     linked_list_node *n = linked_list_node_create();
     n->value = v;
     linked_list_append_node(l, n);
@@ -97,4 +99,23 @@ linked_list_node *linked_list_find_previous_node(linked_list *l, linked_list_nod
     }
 
     return NULL;
+}
+
+void linked_list_free(linked_list *l) {
+    linked_list_node *n = l->head;
+    linked_list_node *t;
+
+    free(l);
+    l = NULL;
+
+    while(n) {
+        t = n;
+        n = n->next;
+        linked_list_node_free(t);
+    }
+}
+
+void linked_list_node_free(linked_list_node *n) {
+    free(n);
+    n = NULL;
 }
